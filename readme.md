@@ -1,4 +1,4 @@
-# INOVACRED - Plataforma de Prevenção de Ações Judiciais por Inadimplência
+# DebtWise - Plataforma de Prevenção de Ações Judiciais por Inadimplência
 
 **Problema Resolvido**: Nosso negócio se concentra em abordar o desafio de lidar com um número substancial de clientes devedores que frequentemente entram com ações judiciais para discutir suas dívidas. Isso ocorre muitas vezes sob a alegação de desconhecimento ou fraude. Para enfrentar esse problema, desenvolvemos uma plataforma de machine learning que utiliza análise preditiva de dados para identificar proativamente quais clientes têm maior probabilidade de propor ações judiciais.
 

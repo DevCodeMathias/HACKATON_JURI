@@ -1,43 +1,65 @@
-import pandas as pd
-from sklearn.linear_model import LinearRegression
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import mean_squared_error
+import numpy as np
+import tensorflow as tf
 import matplotlib.pyplot as plt
-
-# Ler o arquivo Excel
-df = pd.read_excel('data/Base_Hackaton_v.Desafios2e3.xlsx', sheet_name=1)
-
-# Converter a variável categórica 'FAIXA_IDADE_CLIENTE' em variáveis dummy
-df = pd.get_dummies(df, columns=['FAIXA_IDADE_CLIENTE'], drop_first=True)
-
-# Definir as variáveis independentes (X) e a variável dependente (y)
-X = df[['FAIXA_IDADE_CLIENTE_24 a 27 anos', 'FAIXA_IDADE_CLIENTE_27 a 30 anos', 'FAIXA_IDADE_CLIENTE_30 a 33 anos', 'FAIXA_IDADE_CLIENTE_33 a 36 anos', 'FAIXA_IDADE_CLIENTE_36 a 39 anos', 'FAIXA_IDADE_CLIENTE_39 a 42 anos', 'FAIXA_IDADE_CLIENTE_42 a 45 anos', 'FAIXA_IDADE_CLIENTE_45 a 48 anos', 'FAIXA_IDADE_CLIENTE_48 a 51 anos', 'FAIXA_IDADE_CLIENTE_51 a 54 anos', 'FAIXA_IDADE_CLIENTE_54 a 57 anos', 'FAIXA_IDADE_CLIENTE_57 a 60 anos', 'FAIXA_IDADE_CLIENTE_60 a 63 anos', 'FAIXA_IDADE_CLIENTE_63 a 66 anos', 'FAIXA_IDADE_CLIENTE_66 a 69 anos', 'FAIXA_IDADE_CLIENTE_69 a 72 anos', 'FAIXA_IDADE_CLIENTE_72 a 75 anos', 'FAIXA_IDADE_CLIENTE_75 a 78 anos', 'FAIXA_IDADE_CLIENTE_78 a 81 anos', 'FAIXA_IDADE_CLIENTE_81 a 84 anos', 'FAIXA_IDADE_CLIENTE_84 a 87 anos', 'FAIXA_IDADE_CLIENTE_87 a 90 anos', 'FAIXA_IDADE_CLIENTE_90 a 93 anos', 'FAIXA_IDADE_CLIENTE_93 a 96 anos', 'FAIXA_IDADE_CLIENTE_> 96 anos']]
-y = df['VALOR_DIVIDA']
-
-# Dividir os dados em conjuntos de treinamento e teste
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
-# Criar o modelo de regressão linear
-modelo = LinearRegression()
-
-# Treinar o modelo
-modelo.fit(X_train, y_train)
-
-# Fazer previsões no conjunto de teste
-previsoes = modelo.predict(X_test)
-
-# Avaliar a performance do modelo
-mse = mean_squared_error(y_test, previsoes)
-print(f'Erro Médio Quadrático: {mse}')
+from dotenv import load_dotenv
+import os 
 
 
-# Plotar um gráfico de dispersão para visualizar as previsões
-plt.scatter(y_test, previsoes)
-plt.xlabel('Valores Reais')
-plt.ylabel('Previsões')
-plt.title('Valores Reais vs Previsões')
-plt.show()
+load_dotenv()
+
+DATABASE = os.getenv("DATABASE")
+PREVIOUS = os.getenv("PREVIOUS")
+
+DADO = [float(x) for x in DATABASE.split(",")]
+DADO2 = [float(x) for x in PREVIOUS.split(",")]
 
 
+X = np.array(DADO, dtype=np.float32)
+y = np.array(DADO2, dtype=np.float32)
 
+class LinearRegressionModel:
+    def __init__(self):
+        self.W = tf.Variable(np.random.randn(), name="weight")
+        self.b = tf.Variable(np.random.randn(), name="bias")
 
+    def predict(self, x):
+        return self.W * x + self.b
+
+    def get_weights(self):
+        return self.W, self.b
+
+class Trainer:
+    def __init__(self, model, learning_rate=0.01):
+        self.model = model
+        self.optimizer = tf.optimizers.SGD(learning_rate)
+
+    def train_step(self, x, y):
+        with tf.GradientTape() as tape:
+            y_pred = self.model.predict(x)
+            loss = tf.reduce_mean(tf.square(y - y_pred))
+        gradients = tape.gradient(loss, self.model.get_weights())
+        self.optimizer.apply_gradients(zip(gradients, self.model.get_weights()))
+        return loss
+
+    def train(self, X, y, num_epochs=1000):
+        for epoch in range(num_epochs):
+            loss = self.train_step(X, y)
+            if (epoch+1) % 100 == 0:
+                print(f'Epoch [{epoch+1}/{num_epochs}], Loss: {loss.numpy():.4f}')
+
+class Visualizer:
+    def plot_results(self, X, y, y_pred):
+        plt.scatter(X, y, color='blue', label='Dados Reais')
+        plt.plot(X, y_pred, color='red', label='Previsões')
+        plt.xlabel('VALOR_DO_ACORDO')
+        plt.ylabel('ACORDO_NEGADO_APROVADO')
+        plt.legend()
+        plt.show()
+
+model = LinearRegressionModel()
+trainer = Trainer(model)
+trainer.train(X, y)
+
+visualizer = Visualizer()
+y_pred = model.predict(X)
+visualizer.plot_results(X, y, y_pred)

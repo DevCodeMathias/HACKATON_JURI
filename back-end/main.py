@@ -51,8 +51,8 @@ class Visualizer:
     def plot_results(self, X, y, y_pred):
         plt.scatter(X, y, color='blue', label='Dados Reais')
         plt.plot(X, y_pred, color='red', label='Previsões')
-        plt.xlabel('VALOR_DO_ACORDO')
-        plt.ylabel('ACORDO_NEGADO_APROVADO')
+        plt.xlabel(' ')
+        plt.ylabel(' ')
         plt.legend()
         plt.show()
 

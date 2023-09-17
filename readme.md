@@ -1,6 +1,129 @@
-# # Projeto de Regressão Linear com TensorFlow
+# INOVACRED - Plataforma de Prevenção de Ações Judiciais por Inadimplência
 
-Este é um exemplo de implementação de regressão linear utilizando TensorFlow e uma base de dados  para modelagem e otimização.
+**Problema Resolvido**: Nosso negócio se concentra em abordar o desafio de lidar com um número substancial de clientes devedores que frequentemente entram com ações judiciais para discutir suas dívidas. Isso ocorre muitas vezes sob a alegação de desconhecimento ou fraude. Para enfrentar esse problema, desenvolvemos uma plataforma de machine learning que utiliza análise preditiva de dados para identificar proativamente quais clientes têm maior probabilidade de propor ações judiciais.
+
+## Descrição Geral
+
+Nossa plataforma, é uma solução inovadora que combina tecnologia de ponta com inteligência artificial para ajudar as empresas a prevenir ações judiciais decorrentes de inadimplência. Usando um algoritmo de machine learning treinado com dados históricos, nossa plataforma avalia o risco associado a cada cliente devedor. Com base nessa avaliação, as empresas podem adotar estratégias proativas para evitar litígios desnecessários e otimizar a gestão de sua carteira de clientes inadimplentes.
+
+## Tecnologia
+
+- **Plataforma Web/Software**: Desenvolvemos nossa plataforma com Flutter, uma tecnologia de desenvolvimento cross-platform que permite a compilação para web, Windows e Linux. Isso garante acessibilidade e versatilidade na utilização da INOVACRED.
+
+---
+
+> _TEAM AZUL_
+
+![Platform](https://img.shields.io/badge/Platform-Web-blue)
+![License](https://img.shields.io/badge/License-MIT-green)
+
+---
+
+## 🛠 Installation (Web/Software)
+
+1. **Pre-requisites**
+    - Certifique-se de ter o Dart e o Flutter instalados em sua máquina.
+
+2. **Clone the Repository**
+
+    ```bash
+    git clone https://github.com/bellujrb/hackathon-juridico
+    ```
+
+3. **Instale as dependencias**
+
+    ```bash
+    flutter pub get
+    ```
+
+4. **Rode o Web/Software**
+
+    ```bash
+    flutter run
+    ```
+
+---
+
+## 📂 Project File Tree
+
+```
+hackathon_juridico
+├── web
+  └── ...
+├── back-end
+    └── ...
+```
+
+---
+
+## 🧪 Plano de Teste
+
+A estrutura de testes unitários do Flutter permite testes rápidos e confiáveis. Abaixo está um plano de teste unitário baseado na estrutura de arquivos e Flutter.
+
+#### `hackathon-juridico'
+
+- `back-end`
+    - Back-end do Software
+- `web`
+    - Front-end do Web/Software (Multi Plataform)
+
+## 🛡 Data Security & Privacidade
+
+- Todos os dados são rigorosamente processados e anonimizados para garantir a privacidade.
+- Medidas de segurança avançadas protegem contra acesso não autorizado.
+
+---
+
+## 🛠 Tech Stack Web/Software
+
+### Tecnologia(Web/Software)
+- Dart
+- Flutter
+
+### Design Patterns (Web/Software)
+- Singleton
+
+### External Packages (Web/Software)
+- Flutter Modular
+- Flutter Dotenv
+- Google Fonts
+- HTTP
+- Logger
+
+### Architecture (Web/Software)
+- Clean Dart
+
+## 🛠 Tech Stack Back-end
+
+### Tecnologia(Back-end)
+- Python
+
+### External Packages (Back-end)
+- numpy
+- tensorflow
+- matplotlib.pyplot
+- otenv
+- os
+
+---
+
+## Por que Regressão Linear com TensorFlow?
+
+Em resumo, a escolha da regressão linear com TensorFlow foi baseada em sua simplicidade, eficiência, escalabilidade e capacidade de integração, tornando-a a melhor decisão para a INOVACRED para predição de ações judiciais por inadimplência.
+
+### Integração com Ecossistema de Machine Learning:
+Como parte de um ecossistema mais amplo de machine learning, o TensorFlow facilita a integração com outras ferramentas e soluções, permitindo a expansão futura.
+
+### Simplicidade e Eficiência:
+A regressão linear é uma técnica simples e comprovada para avaliar riscos de inadimplência. Sua implementação com TensorFlow oferece eficiência no treinamento e permite a análise ágil de grandes conjuntos de dados.
+
+### Escalabilidade:
+O uso do TensorFlow proporciona escalabilidade, tornando possível lidar com um grande volume de informações de clientes devedores. Isso é fundamental para uma análise abrangente.
+
+### Treinamento Otimizado:
+O TensorFlow é otimizado para o treinamento eficiente de modelos, acelerando o processo e melhorando a precisão das previsões.
+
+
 
 ## Descrição do Código
 

@@ -1,6 +1,6 @@
 # # Projeto de Regressão Linear com TensorFlow
 
-Este é um exemplo simples de implementação de regressão linear utilizando TensorFlow e uma base de dados  para modelagem e otimização.
+Este é um exemplo de implementação de regressão linear utilizando TensorFlow e uma base de dados  para modelagem e otimização.
 
 ## Descrição do Código
 
